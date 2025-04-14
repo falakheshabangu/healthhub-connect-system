@@ -25,7 +25,7 @@ import {
   Calendar,
   Clock,
   UserRound,
-  FileMedical,
+  FileText,
   PlusCircle,
   Activity,
   PlusSquare,
@@ -187,7 +187,7 @@ const Dashboard = () => {
               <CardTitle className="text-sm font-medium">
                 Pending Reports
               </CardTitle>
-              <FileMedical className="h-4 w-4 text-muted-foreground" />
+              <FileText className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">7</div>
@@ -433,7 +433,7 @@ const Dashboard = () => {
                 </Button>
                 <Button asChild className="h-24 flex flex-col space-y-2">
                   <Link to="/medical-records/new">
-                    <FileMedical className="h-6 w-6" />
+                    <FileText className="h-6 w-6" />
                     <span>New Medical Record</span>
                   </Link>
                 </Button>
