@@ -10,11 +10,14 @@ import {
   Settings,
   LogOut,
   Users,
+  Pill,
+  Stethoscope,
+  Flask,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 
-type Role = "admin" | "doctor" | "nurse" | "patient";
+type Role = "admin" | "doctor" | "pharmacist" | "patient";
 
 interface SidebarProps {
   role?: Role;
@@ -106,21 +109,26 @@ export function Sidebar({ role = "admin" }: SidebarProps) {
         label: "Prescriptions",
       },
     ],
-    nurse: [
+    pharmacist: [
+      {
+        to: "/prescriptions",
+        icon: <Pill className="h-5 w-5" />,
+        label: "Prescriptions",
+      },
+      {
+        to: "/inventory",
+        icon: <Flask className="h-5 w-5" />,
+        label: "Inventory",
+      },
       {
         to: "/patients",
         icon: <UserRound className="h-5 w-5" />,
         label: "Patients",
       },
       {
-        to: "/appointments",
+        to: "/consultations",
         icon: <Calendar className="h-5 w-5" />,
-        label: "Appointments",
-      },
-      {
-        to: "/medical-records",
-        icon: <FileText className="h-5 w-5" />,
-        label: "Medical Records",
+        label: "Consultations",
       },
     ],
     patient: [
@@ -167,7 +175,7 @@ export function Sidebar({ role = "admin" }: SidebarProps) {
       )}
     >
       <div className="flex h-16 items-center gap-2 border-b border-sidebar-border px-4">
-        <Landmark className="h-6 w-6 text-sidebar-primary" />
+        <Stethoscope className="h-6 w-6 text-sidebar-primary" />
         {expanded && (
           <span className="text-lg font-bold text-sidebar-foreground">
             HealthHub

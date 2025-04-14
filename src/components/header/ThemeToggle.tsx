@@ -6,9 +6,9 @@ import { useState, useEffect } from "react";
 export function ThemeToggle() {
   const [theme, setTheme] = useState(() => {
     if (typeof window !== "undefined") {
-      return localStorage.getItem("theme") || "light";
+      return localStorage.getItem("theme") || "dark"; // Set default to dark
     }
-    return "light";
+    return "dark"; // Default to dark
   });
 
   useEffect(() => {

@@ -2,7 +2,7 @@
 import { useRole } from "@/contexts/RoleContext";
 import { AdminDashboard } from "@/components/dashboard/AdminDashboard";
 import { DoctorDashboard } from "@/components/dashboard/DoctorDashboard";
-import { NurseDashboard } from "@/components/dashboard/NurseDashboard";
+import { PharmacistDashboard } from "@/components/dashboard/PharmacistDashboard";
 import { PatientDashboard } from "@/components/dashboard/PatientDashboard";
 
 const Dashboard = () => {
@@ -14,8 +14,8 @@ const Dashboard = () => {
       return <AdminDashboard />;
     case "doctor":
       return <DoctorDashboard />;
-    case "nurse":
-      return <NurseDashboard />;
+    case "pharmacist":
+      return <PharmacistDashboard />;
     case "patient":
       return <PatientDashboard />;
     default:
