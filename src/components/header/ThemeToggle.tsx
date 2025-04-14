@@ -33,6 +33,7 @@ export function ThemeToggle() {
       size="icon"
       onClick={toggleTheme}
       aria-label="Toggle theme"
+      className="border-accent bg-background hover:bg-accent/10 hover:text-accent"
     >
       <Icon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all" />
       <span className="sr-only">Toggle theme</span>
