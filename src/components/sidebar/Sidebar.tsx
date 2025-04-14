@@ -1,4 +1,3 @@
-
 import { Link, useLocation } from "react-router-dom";
 import {
   Landmark,
@@ -12,7 +11,6 @@ import {
   Users,
   Pill,
   Stethoscope,
-  Flask,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
@@ -49,7 +47,6 @@ export function Sidebar({ role = "admin" }: SidebarProps) {
 
   const isActive = (path: string) => location.pathname === path;
 
-  // Common navigation items for all roles
   const commonNavItems = [
     {
       to: "/dashboard",
@@ -58,7 +55,6 @@ export function Sidebar({ role = "admin" }: SidebarProps) {
     },
   ];
 
-  // Role-specific navigation items
   const roleNavItems = {
     admin: [
       {
@@ -117,7 +113,7 @@ export function Sidebar({ role = "admin" }: SidebarProps) {
       },
       {
         to: "/inventory",
-        icon: <Flask className="h-5 w-5" />,
+        icon: <Pill className="h-5 w-5" />,
         label: "Inventory",
       },
       {
@@ -150,7 +146,6 @@ export function Sidebar({ role = "admin" }: SidebarProps) {
     ],
   };
 
-  // Bottom navigation items
   const bottomNavItems = [
     {
       to: "/settings",
@@ -164,7 +159,6 @@ export function Sidebar({ role = "admin" }: SidebarProps) {
     },
   ];
 
-  // Get the navigation items for the current role
   const navItems = [...commonNavItems, ...roleNavItems[role]];
 
   return (
