@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { RoleProvider } from "@/contexts/RoleContext";
 import Index from "./pages/Index";
@@ -27,14 +27,26 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/login" element={<Login />} />
+            
+            {/* Common layout wrapper */}
             <Route element={<Layout />}>
+              {/* Default dashboard route */}
               <Route path="/dashboard" element={<Dashboard />} />
+              
+              {/* Role-specific dashboard routes */}
+              <Route path="/admin/dashboard" element={<Dashboard />} />
+              <Route path="/doctor/dashboard" element={<Dashboard />} />
+              <Route path="/pharmacist/dashboard" element={<Dashboard />} />
+              <Route path="/patient/dashboard" element={<Dashboard />} />
+              
+              {/* Common routes */}
               <Route path="/patients" element={<Patients />} />
               <Route path="/appointments" element={<Appointments />} />
               <Route path="/medical-records" element={<MedicalRecords />} />
               <Route path="/prescriptions" element={<Prescriptions />} />
             </Route>
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            
+            {/* Catch-all redirect to not found */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
