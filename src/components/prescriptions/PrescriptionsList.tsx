@@ -1,8 +1,7 @@
-
 import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { FilePrescription } from "lucide-react";
+import { FileText } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Prescription, getPrescriptions } from "@/api/patientApi";
 
@@ -40,7 +39,7 @@ export function PrescriptionsList() {
       <Card>
         <CardContent className="py-8">
           <div className="text-center space-y-4">
-            <FilePrescription className="h-12 w-12 mx-auto text-muted-foreground" />
+            <FileText className="h-12 w-12 mx-auto text-muted-foreground" />
             <h3 className="text-lg font-medium">No Prescriptions Found</h3>
             <p className="text-muted-foreground">
               You don't have any active prescriptions.
