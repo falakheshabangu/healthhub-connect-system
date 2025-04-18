@@ -15,6 +15,7 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { login } from "@/api/patientApi";
 import { useRole } from "@/contexts/RoleContext";
+import { useUser } from "@/contexts/UserContext"
 import { 
   Select, 
   SelectContent, 
@@ -34,6 +35,7 @@ const Login = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
   const { setRole: setGlobalRole } = useRole();
+  const { setName: setUserName, setSurname: setUserSurname } = useUser();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -43,17 +45,17 @@ const Login = () => {
     try {
       // Call the login API with role included
       const response = await login({ username: email, password, role });
-      
+      console.log(response.access_token)
       // Update the global role state
-      setGlobalRole(response.role);
+      setGlobalRole(role);
       
       toast({
         title: "Logged in successfully",
-        description: `Welcome to HealthHub EHR System as ${response.role}`,
+        description: `Welcome to HealthHub EHR System as ${role}`,
       });
       
       // Redirect based on role
-      switch (response.role) {
+      switch (role) {
         case "admin":
           navigate("/admin/dashboard");
           break;

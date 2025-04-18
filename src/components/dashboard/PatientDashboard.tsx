@@ -97,7 +97,7 @@ export function PatientDashboard() {
       id: index + 1,
       doctorName: appointment.doctor_name,
       time: new Date(appointment.start_time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-      date: new Date(appointment.start_time).toLocaleDateString(),
+      date: new Date(appointment.start_time).toLocaleDateString([], { year: 'numeric', month: 'long', day: '2-digit' }),
       type: appointment.type,
     }));
   };
@@ -135,7 +135,7 @@ export function PatientDashboard() {
               <div className="text-2xl font-bold">{appointments.length}</div>
               <p className="text-xs text-muted-foreground">
                 {appointments.length > 0 
-                  ? `Next on ${new Date(appointments[0].start_time).toLocaleDateString()}` 
+                  ? `Next on ${new Date(appointments[0].start_time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) } ${new Date(appointments[0].start_time).toLocaleDateString()}` 
                   : "No upcoming appointments"}
               </p>
             </CardContent>

@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { RoleProvider, useRole } from "@/contexts/RoleContext";
+import { UserProvider } from "@/contexts/UserContext";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
@@ -40,6 +41,7 @@ const RoleBasedLayout = ({ allowedRoles }) => {
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <RoleProvider>
+      <UserProvider>
       <TooltipProvider>
         <Toaster />
         <Sonner />
@@ -92,6 +94,7 @@ const App = () => (
           </Routes>
         </BrowserRouter>
       </TooltipProvider>
+      </UserProvider>
     </RoleProvider>
   </QueryClientProvider>
 );
